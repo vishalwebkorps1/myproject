@@ -70,9 +70,21 @@
 
     
     <div class="col-lg-3">
+    <div class="form-group">
+    <%= form.label :exp_month, class: "mb-2 mt-2"%>
+    <%= form.number_field :exp_month, class: "form-control", required: true , min: 1, max: 12 %>
     </div>
-    <div class="col-lg-6">
+     </div>
+   
+    <div class="col-lg-3">
+    <div class="form-group">
+    <%= form.label :exp_year, class: "mb-2 mt-2"%>
+    <%= form.number_field :exp_year, class: "form-control", required: true , min: 2022, max: 2026 %>
     </div>
+    </div>
+    </div>
+    <div class="d-grid gap-2">
+    <%= form.submit "Book your Tickets Now " , class: "btn btn-outline-danger btn-lg mt-3"%>
     </div>
 
 <% end %>
