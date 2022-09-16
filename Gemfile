@@ -70,6 +70,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
 end
 
 gem 'cssbundling-rails'
+gem 'stripe'
