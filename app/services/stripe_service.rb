@@ -6,7 +6,7 @@ class StripeService
 
     def find_or_create_customer(customer)
         if customer.stripe_customer_id.present?
-            stripe_customer = Stripe::Customer.retrive(customer.
+            stripe_customer = Stripe::Customer.retrieve(customer.
             stripe_customer_id)
         else
             stripe_customer = Stripe::Customer.create({
@@ -44,6 +44,6 @@ class StripeService
             currency: 'usd',
             source: card_id,
             customer: stripe_customer_id,
-            description: "Amount $#{amount_to_be_paid} charged for #{workshop.name}"
+            description: "Amount $#{amount_to_be_paid} charged for #{workshop.name}"})
         end
 end
