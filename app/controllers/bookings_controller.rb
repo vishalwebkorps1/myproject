@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+    
     def create
         @stripe_service = StripeService.new
         @workshop = Workshop.find(params[:workshop_id])
@@ -6,7 +7,7 @@ class BookingsController < ApplicationController
         unless @customer.present?
             @customer = Customer.create(customer_params)
         end
-
+          
         @stripe_customer = @stripe_service.
         find_or_create_customer(@customer)
 
@@ -26,6 +27,7 @@ class BookingsController < ApplicationController
             no_of_tickets: params[:no_of_tickets].to_i,
             amount_paid: @amount_to_be_paid
         )
+        BookingsMailer.booking_confirmation(@booking).deliver_now
         redirect_to workshop_path(@workshop), notice: 'Your tickets has been booked'
 
     rescue Stripe::StripeError => error
