@@ -1,6 +1,8 @@
 class Booking < ApplicationRecord
+  has_many :refunds
   belongs_to :customer
   belongs_to :workshop
+ 
 
   validates :order_number, presence: true, uniqueness: true
 
