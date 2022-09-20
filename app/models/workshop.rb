@@ -13,6 +13,8 @@ class Workshop < ApplicationRecord
     validates :end_date, comparison: { greater_than: 
      :start_date, message: 'can not be before start date'}
 
+     scope :upcoming_workshops, -> {where('start_date > ?', Date.today)}
+     scope :past_workshops, -> {where('end_date < ?', Date.today)}
 
      def total_duration
       "#{start_date} to #{end_date}"
