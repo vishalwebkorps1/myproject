@@ -1,4 +1,5 @@
 class RefundsController < ApplicationController
+    before_action :set_refund_with_parents, only: %i[edit update  refund_acceptance]
     def new 
         @refund = Refund.new
     end
@@ -27,5 +28,19 @@ class RefundsController < ApplicationController
             redirect_to new_refund_path, alert: "You provided an invalid booking ID #{
                 params[:refund][:order_number]}. We found no booking with this booking id. Please provide valid booking Id."
         end
+    end
+
+    def update
+    end
+
+    def refund_acceptance
+    end
+
+    private
+
+    def set_refund_with_parents
+        @refund = Refund.find(params[:id])
+        @booking = @refund.booking
+        @workshop = @booking.workshop
     end
 end
