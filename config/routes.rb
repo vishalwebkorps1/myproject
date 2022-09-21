@@ -16,5 +16,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
+    resources :workshops
+    resources :bookings
+    resources :customers
+    resources :refunds
   end  
 end
