@@ -13,7 +13,14 @@ class RefundNotificationMailer < ApplicationMailer
   end
 
  
-  def admin_refund_notification
-    
+  def admin_refund_notification(refund)
+    @refund = refund
+    @booking = refund.booking
+    @customer = refund.customer 
+    @workshop = @booking.workshop 
+    @refundable_amount = @refund.no_of_tickets * @workshop.
+    registration_fee
+    mail to: AdminUser.first.email, subject: "Refund request coming for #{@workshop.
+    name}" 
   end
 end
