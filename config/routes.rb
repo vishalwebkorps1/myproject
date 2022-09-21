@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :workshops
     resources :bookings
     resources :customers
-    resources :refunds
+    resources :refunds do
+      member do 
+        patch :process_refund
+      end 
+    end
   end  
 end
