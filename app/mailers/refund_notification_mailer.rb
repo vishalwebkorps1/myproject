@@ -23,4 +23,22 @@ class RefundNotificationMailer < ApplicationMailer
     mail to: AdminUser.first.email, subject: "Refund request coming for #{@workshop.
     name}" 
   end
+
+  def refund_success_notification_to_customer(refund)
+    @refund = refund
+    @booking = refund.booking
+    @customer = refund.customer 
+    @workshop = @booking.workshop 
+    mail to: @customer.email, subject: "Refund processed succesfully for #{@workshop.
+    name}" 
+  end
+
+  def refund_success_notification_to_admin(refund)
+    @refund = refund
+    @booking = refund.booking
+    @customer = refund.customer 
+    @workshop = @booking.workshop 
+    mail to: AdminUser.first.email, subject: "Thank you for processing refund for #{@workshop.
+    name} | #{@booking.order_number}" 
+  end
 end
